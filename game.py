@@ -20,11 +20,18 @@ class Game:
 
 
 def calc_score(p1: int, p2: int) -> str:
-    if p1 == 3 and p2 == 3:
-        return "deuce"
-    if p1 > 3:
+    special_scores = {
+        (3, 3): "deuce",
+        (4, 3): "P1 Advantage",
+        (3, 4): "P2 Advantage",
+    }
+    score = special_scores.get((p1, p2))
+    if score is not None:
+        return score
+
+    if p1 == 4:
         return "P1 Wins"
-    if p2 > 3:
+    if p2 == 4:
         return "P2 Wins"
 
     score_name = {0: "love", 1: "15", 2: "30", 3: "40"}

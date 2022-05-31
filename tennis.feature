@@ -19,15 +19,15 @@ Feature: Tennis Scoring System
         When you win a point
         Then you win the game
 
-    Scenario:  Tying on 40
+    Scenario:  Deuce on 40
         Given you have 3 points and your opponent has 3 points
         Then the score is deuce.
 
 
-    # Scenario:
-    #     Given the game is in deuce
-    #     When you win a point
-    #     Then you have advantage
+    Scenario: Advantage
+        Given the game is in deuce
+        When you win a point
+        Then the score is P1 Advantage.
 
     # Scenario:
     #     Given you have advantage

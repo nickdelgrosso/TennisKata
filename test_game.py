@@ -18,8 +18,11 @@ scenarios(".")
 )
 def stepdef(p1, p2, names):
     names.game = Game(p1=p1, p2=p2)
-    
 
+
+@given("the game is in deuce")   
+def stepdef(names):
+    names.game = Game(p1=3, p2=3)
 
 @then(
     parse("the score is {score}.")
