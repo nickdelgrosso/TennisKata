@@ -29,9 +29,9 @@ def calc_score(p1: int, p2: int) -> str:
     if score is not None:
         return score
 
-    if p1 == 4:
+    if p1 >= 4:
         return "P1 Wins"
-    if p2 == 4:
+    if p2 >= 4:
         return "P2 Wins"
 
     score_name = {0: "love", 1: "15", 2: "30", 3: "40"}

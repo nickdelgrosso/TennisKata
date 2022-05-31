@@ -24,6 +24,10 @@ def stepdef(p1, p2, names):
 def stepdef(names):
     names.game = Game(p1=3, p2=3)
 
+@given("you have advantage")
+def stepdef(names):
+    names.game = Game(p1=4, p2=3)
+
 @then(
     parse("the score is {score}.")
 )
