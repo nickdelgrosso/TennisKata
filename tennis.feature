@@ -29,13 +29,13 @@ Feature: Tennis Scoring System
         When you win a point
         Then the score is P1 Advantage.
 
-    Scenario:  Winning after Advantage
+    Scenario: Winning after Advantage
         Given you have advantage
         When you win a point
         Then you win the game
 
-    # Scenario:
-    #     Given you have advantage
-    #     When your opponent wins a point
-    #     Then the score is "deuce"
+    Scenario: Losing after Advantage
+        Given you have advantage
+        When your opponent win a point
+        Then the score is deuce.
 

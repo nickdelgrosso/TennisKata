@@ -11,10 +11,16 @@ class Game:
         return calc_score(p1=self.p1, p2=self.p2)
 
     def score_p1(self) -> None:
-        self.p1 += 1
+        if self.p1 == 3 and self.p2 == 4:
+            self.p2 -= 1
+        else:
+            self.p1 += 1
 
     def score_p2(self) -> None:
-        self.p2 += 1
+        if self.p1 == 4 and self.p2 == 3:
+            self.p1 -= 1
+        else:
+            self.p2 += 1
 
     
 

@@ -35,9 +35,17 @@ def stepdef(score: str, names):
     assert names.game.score == score
 
 
-@when("you win a point")
-def stepdef(names):
-    names.game.score_p1()
+@when(
+    parse("{is_p1} win a point", ),
+    converters={
+        'is_p1': lambda s: {'you': True, 'your opponent': False}[s]
+    }
+)
+def stepdef(is_p1: bool, names):
+    if is_p1:
+        names.game.score_p1()
+    else:
+        names.game.score_p2()
 
 
 @then("you win the game")
