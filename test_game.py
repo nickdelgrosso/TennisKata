@@ -22,7 +22,7 @@ def stepdef(p1, p2, names):
 
 
 @then(
-    parse("the score is {score}")
+    parse("the score is {score}.")
 )
 def stepdef(score: str, names):
     assert names.game.score == score

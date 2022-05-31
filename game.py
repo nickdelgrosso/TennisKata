@@ -20,9 +20,11 @@ class Game:
 
 
 def calc_score(p1: int, p2: int) -> str:
+    if p1 == 3 and p2 == 3:
+        return "deuce"
     if p1 > 3:
         return "P1 Wins"
-    elif p2 > 3:
+    if p2 > 3:
         return "P2 Wins"
 
     score_name = {0: "love", 1: "15", 2: "30", 3: "40"}
