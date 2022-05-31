@@ -3,23 +3,21 @@ from pytest_bdd.parsers import parse
 import pytest
 from types import SimpleNamespace
 
-from game import calc_score
+from game import Game
 
 @pytest.fixture
 def names():
     return SimpleNamespace()
     
 
-scenarios("tennis.feature")
+scenarios(".")
 
 
 @given(
-    parse("you have {p1:d} point and your opponent has {p2:d} points")
+    parse("you have {p1:d} points and your opponent has {p2:d} points")
 )
 def stepdef(p1, p2, names):
-    assert isinstance(p1, int) and isinstance(p2, int)
-    names.p1 = p1
-    names.p2 = p2
+    names.game = Game(p1=p1, p2=p2)
     
 
 
@@ -27,5 +25,14 @@ def stepdef(p1, p2, names):
     parse("the score is {score}")
 )
 def stepdef(score: str, names):
-    observed = calc_score(p1=names.p1, p2=names.p2)
-    assert observed == score
+    assert names.game.score == score
+
+
+@when("you win a point")
+def stepdef(names):
+    names.game.score_p1()
+
+
+@then("you win the game")
+def stepdef(names):
+    assert names.game.score == "P1 Wins"

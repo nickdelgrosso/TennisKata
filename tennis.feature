@@ -2,11 +2,10 @@ Feature: Tennis Scoring System
 
 
     Scenario Outline: Score Names are Correct when points are different
-        Given you have <yourPoints> point and your opponent has <oppPoints> points
+        Given you have <yourPoints> points and your opponent has <oppPoints> points
         Then the score is <score>
         
         Examples:
-        
         | yourPoints | oppPoints | score |
         | 1          | 1         | 15 - 15 |
         | 1          | 2         | 15 - 30 |
@@ -14,10 +13,11 @@ Feature: Tennis Scoring System
         | 0          | 3         | love - 40 |
         | 0          | 0         | love - love |
 
-    # Scenario:
-    #     Given you have 40
-    #     When you win a point
-    #     Then you win the game
+
+    Scenario:  Winning by Two or More
+        Given you have 40 points and your opponent has 0 points
+        When you win a point
+        Then you win the game
 
     # Scenario:
     #     Given you have 40 and your opponent has 40
